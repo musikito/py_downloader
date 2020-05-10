@@ -13,6 +13,7 @@ def download_url(url):
 
     r = requests.get(url, stream=True)
     if r.status_code == requests.codes.ok:
+        print("reading url ", url)
         with open(file_name, 'wb') as f:
             for data in r:
                 f.write(data)
@@ -22,7 +23,7 @@ def download_url(url):
 
 
 def read_url(url):
-    url = url.replace(" ", "%20")
+    #url = url.replace(" ", "%20")
     req = Request(url)
     a = urlopen(req).read()
     soup = BeautifulSoup(a, 'html.parser')
@@ -37,4 +38,4 @@ def read_url(url):
         print(url_new)
 
 
-read_url("http://www.example.com")
+read_url("http:www.example.com")
